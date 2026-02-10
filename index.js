@@ -3,12 +3,23 @@ const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 let isitlink=false
+let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+}
 
 inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
-    renderLeads()
-})
+    myLeads.push(inputEl.value);
+    inputEl.value = "";
+    try {
+        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+        renderLeads();
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 
 function renderLeads() {
     let listItems = ""
