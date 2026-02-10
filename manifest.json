@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "version": "0.1",
-    "name": "SAVLINK",
+    "name": "NoteIt",
     "action": {
         "default_popup": "index.html",
         "default_icon": "icon.png"
