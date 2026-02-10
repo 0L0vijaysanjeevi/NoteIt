@@ -7,7 +7,6 @@
 - **Text Input**: Easily enter plain text notes.
 - **Link Saving**: Store URLs for quick access later.
 - **Simple Display**: View all saved notes and links in one accessible area.
-- **Responsive Design**: Optimized for various screen sizes and devices.
 
 ## Tech Stack
 
