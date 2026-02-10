@@ -1,33 +1,27 @@
-# SAVLINK
+# NoteIt
 
-**SAVLINK** is a simple browser extension for saving and displaying your favorite links effortlessly. 
+**NoteIt** is a user-friendly browser extension that allows you to save and organize all your notes and links effortlessly.
 
 ## Features
 
-- **Input Box**: Enter URLs you want to save.
-- **Submit Button**: Click to save the entered link.
-- **Display Area**: All saved links appear below the button for easy access.
+- **Text Input**: Easily enter plain text notes.
+- **Link Saving**: Store URLs for quick access later.
+- **Simple Display**: View all saved notes and links in one accessible area.
+- **Responsive Design**: Optimized for various screen sizes and devices.
 
-## Getting Started
+## Tech Stack
 
-### Installation
+- HTML, CSS, and plain JavaScript
+- Utilizes a clean and modern UI
 
-1. Make sure to download or clone the repository.
-2. Open your browser and go to **Extensions**.
-3. Enable **Developer Mode**.
-4. Click on **Load Unpacked** and select the folder containing your extension files (HTML, CSS, and JavaScript).
+## Files
 
-### Usage
+- `index.html` — Structure and markup
+- `index.css` — Styling for a polished look
+- `index.js` — Logic for saving and displaying notes and links
 
-1. Open the extension from your browser’s toolbar.
-2. Type a URL into the input box.
-3. Click the **SAVE** button to add the link.
-4. Your saved links will display below, and you can click on them to visit the respective sites.
+## Installation
 
-## Code Overview
-
-### Structure
-
-- **HTML**: Contains the input form and area for displaying saved links.
-- **CSS**: Provides styling to make the extension visually appealing.
-- **JavaScript**: Handles link submission, validation, and display logic.
+1. Download or clone the repository:
+   ```bash
+   git clone <repository\_url>
