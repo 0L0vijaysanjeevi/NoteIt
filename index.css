@@ -5,9 +5,8 @@ body {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #0F0F0F;
-    font-size:18px ;
+    font-size: 18px;
 }
-
 
 input {
     width: 100%;
@@ -24,12 +23,18 @@ input {
 
 button {
     margin-top: 7px;
-    background: brown;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 20px ;
+    border-radius: 20px;
     font-weight: bold;
+}
+
+#save-note-btn{
+    background-color: brown;
+}
+#delete-notes-btn{
+    background: #08A045;
 }
 
 ul {
@@ -49,17 +54,25 @@ li {
 
 a {
     color: white;
-    text-decoration:none ;
+    text-decoration: none;
 }
-a:hover{
+
+a:hover {
     color: grey;
-    text-decoration: ;
 }
-#sv {
+
+.btn {
     display: inline-block;
     padding-top: 1px;
     padding-left: 10px;
 }
-#d {
+
+.d {
     display: flex;
 }
+
+.comic-relief-bold {
+    font-family: "Comic Relief", system-ui;
+    font-weight: 700;
+}
+

@@ -1,21 +1,32 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="index.css">
-        <link rel="icon" href="icon.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <input type="text" id="input-el">
-        <button id="input-btn">
-            <div id="d">
-                <img src="icon.png" width="20px">
-                <div id="sv">SAVE</div> 
-            </div>
-        </button>
-        <ul id="ul-el">
-        </ul>
-        <script src="index.js"></script>
-    </body>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <input type="text" id="note-input">
+    
+    <button id="save-note-btn" class="action-button">
+        <div class="d">
+            <img src="saveicon.png" width="20px">
+            <div class="btn">SAVE</div> 
+        </div>
+    </button>
+
+    <button id="delete-notes-btn" class="action-button">
+        <div class="d">
+            <img src="delicon.png" width="20px">
+            <div class="btn">DELETE <span class="comic-relief-bold"> (All)</span></div> 
+        </div>
+    </button>
+    
+    <ul id="notes-list" class="list-items"></ul>
+    
+    <script src="index.js"></script>
+</body>
 </html>
+
