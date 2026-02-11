@@ -1,52 +1,71 @@
-let myLeads = []
-const inputEl = document.getElementById("input-el")
-const inputBtn = document.getElementById("input-btn")
-const ulEl = document.getElementById("ul-el")
-let isitlink=false
-let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
-if (leadsFromLocalStorage) {
-    myLeads = leadsFromLocalStorage
-    renderLeads()
+let myNotes = [];
+const inputEl = document.getElementById("note-input");
+const inputBtn = document.getElementById("save-note-btn");
+const deleteBtn = document.getElementById("delete-notes-btn");
+const ulEl = document.getElementById("notes-list");
+
+let notesFromLocalStorage = JSON.parse(localStorage.getItem("myNotes"));
+if (notesFromLocalStorage) {
+    myNotes = notesFromLocalStorage;
+    renderNotes();
 }
 
-inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value);
-    inputEl.value = "";
-    try {
-        localStorage.setItem("myLeads", JSON.stringify(myLeads));
-        renderLeads();
-    } catch (error) {
-        console.error(error);
+inputBtn.addEventListener("click", mainfunc);
+inputEl.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        mainfunc();
     }
 });
 
+function mainfunc() {
+    myNotes.push(inputEl.value);
+    inputEl.value = "";
+    try {
+        localStorage.setItem("myNotes", JSON.stringify(myNotes));
+        renderNotes();
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-function renderLeads() {
-    let listItems = ""
-    for (let i = 0; i < myLeads.length; i++) {
-        isitlink=validateLink(myLeads[i])
-        if (isitlink === true){
+function delfunc(){
+    localStorage.clear();
+    myNotes = [];
+    ulEl.innerHTML = "";
+}
+
+function renderNotes() {
+    let listItems = "";
+    for (let i = 0; i < myNotes.length; i++) {
+        let isitlink = validateLink(myNotes[i]);
+        if (isitlink) {
             listItems += `
             <li>
-                <a target='_blank' href='${myLeads[i]}'>
-                    ${myLeads[i]}
+                <a target='_blank' href='https://${myNotes[i]}'>
+                    ${myNotes[i]}
                 </a>
             </li>
-        `
-        }
-        else{
+            `;
+        } else {
             listItems += `
             <li>
-                ${myLeads[i]}
+                ${myNotes[i]}
             </li>
-        `
+            `;
         }
     }
-    ulEl.innerHTML = listItems  
+    ulEl.innerHTML = listItems;
 }
+
 function validateLink(inputValue) {
-    const httpRegex = /^(http:\/\/|https:\/\/)/i; 
-    const tldRegex = /\.[a-z]{2,}$/i; 
+    const httpRegex = /^(http:\/\/|https:\/\/)/i;
+    const tldRegex = /\.[a-z]{2,}$/i;
     return (httpRegex.test(inputValue) && tldRegex.test(inputValue)) || tldRegex.test(inputValue);
 }
 
+deleteBtn.addEventListener("click", delfunc);
+inputEl.addEventListener('keypress', function (event) {
+    if (event.key === 'Delete') {
+        delfunc();
+    }
+});
