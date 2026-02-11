@@ -1,6 +1,6 @@
 body {
-    min-width: 350px;
-    min-height: 300px;
+    min-width: 500px;
+    min-height: 400px;
     margin: 0;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
@@ -30,17 +30,23 @@ button {
     font-weight: bold;
 }
 
-#save-note-btn{
+#save-notes-btn{
     background-color: brown;
 }
 #delete-notes-btn{
     background: #08A045;
 }
-#save-note-btn:active{
+#save-notes-btn:active{
     background-color: #7A1F1F;
 }
 #delete-notes-btn:active{
-    background: #078D3D;
+    background: #056B2B;
+}
+#tab-notes-btn{
+    background-color: #2b778f;
+}
+#tab-notes-btn:active{
+    background-color: #1e5264;
 }
 
 ul {

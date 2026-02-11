@@ -1,6 +1,7 @@
 let myNotes = [];
 const inputEl = document.getElementById("note-input");
-const inputBtn = document.getElementById("save-note-btn");
+const inputBtn = document.getElementById("save-notes-btn");
+const tabBtn = document.getElementById("tab-notes-btn");
 const deleteBtn = document.getElementById("delete-notes-btn");
 const ulEl = document.getElementById("notes-list");
 
@@ -28,29 +29,23 @@ function mainfunc() {
     }
 }
 
-function delfunc(){
-    localStorage.clear();
-    myNotes = [];
-    ulEl.innerHTML = "";
-}
-
 function renderNotes() {
     let listItems = "";
     for (let i = 0; i < myNotes.length; i++) {
-        let isitlink = validateLink(myNotes[i]);
-        if (isitlink) {
+        const value = myNotes[i].trim();
+        if (validateLink(value)) {
+            let href = value;
+            if (!/^[a-zA-Z]+:\/\//.test(href)) {
+                href = 'https://' + href;
+            }
             listItems += `
             <li>
-                <a target='_blank' href='https://${myNotes[i]}'>
-                    ${myNotes[i]}
-                </a>
+                <a target='_blank' href='${href}'>${myNotes[i]}</a>
             </li>
             `;
         } else {
             listItems += `
-            <li>
-                ${myNotes[i]}
-            </li>
+            <li>${myNotes[i]}</li>
             `;
         }
     }
@@ -58,14 +53,36 @@ function renderNotes() {
 }
 
 function validateLink(inputValue) {
-    const httpRegex = /^(http:\/\/|https:\/\/)/i;
-    const tldRegex = /\.[a-z]{2,}$/i;
-    return (httpRegex.test(inputValue) && tldRegex.test(inputValue)) || tldRegex.test(inputValue);
+    try {
+        new URL(inputValue.trim());
+        return true;
+    } catch (e) {
+        const domainRegex = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+        return domainRegex.test(inputValue.trim());
+    }
+}
+
+function delfunc() {
+    localStorage.clear();
+    myNotes = [];
+    ulEl.innerHTML = "";
 }
 
 deleteBtn.addEventListener("click", delfunc);
-inputEl.addEventListener('keypress', function (event) {
-    if (event.key === 'Delete') {
-        delfunc();
+
+tabBtn.addEventListener("click", function() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        if (tabs.length === 0) return;
+        myNotes.push(tabs[0].url);
+        localStorage.setItem("myNotes", JSON.stringify(myNotes));
+        renderNotes();
+    });
+});   
+
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href) {
+        e.preventDefault();
+        chrome.tabs.create({ url: link.href });
     }
-});
+});   
