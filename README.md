@@ -36,5 +36,3 @@
 - **`index.js`**: Logic for saving and displaying notes and links.
 
 ---
-
-This version maintains clear spacing between sections and lines within lists for enhanced readability.
