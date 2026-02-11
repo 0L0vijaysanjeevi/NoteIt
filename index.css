@@ -36,6 +36,12 @@ button {
 #delete-notes-btn{
     background: #08A045;
 }
+#save-note-btn:active{
+    background-color: #7A1F1F;
+}
+#delete-notes-btn:active{
+    background: #078D3D;
+}
 
 ul {
     margin-top: 20px;
